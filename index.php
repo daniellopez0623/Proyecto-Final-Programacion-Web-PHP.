@@ -21,7 +21,7 @@ $service = new userservice("database");
 // $service->GetlistaP();
 
 
-$mysqli = new mysqli("localhost", "root", "Msi1997809", "proyecto_final");
+$mysqli = new mysqli("localhost", "root", "", "proyecto_final");
 
 if (mysqli_connect_errno()) {
     printf("Conexión fallida: %s\n", mysqli_connect_error());
@@ -73,33 +73,31 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                                         
                                     }else{
                                 
-                                        $message = "cedula incorrecta o no esta registrado/as";
+                                        $message = "Cedula incorrecta";
                                     }
                                 }
 
                             }else{
                                 
-                                echo "Debe de haber al menos 2 alcaldes activos para iniciar la votacion.";
+                                echo "<script> alert('Debe de haber al menos 2 alcalde activos para iniciar la votacion.')</script>";
                             }
-
-
                         }
 
                     }else{
                                 
-                        echo "Debe de haber al menos 22222 senadores activos para iniciar la votacion.";
+                        echo "<script> alert('Debe de haber al menos 2 senadores activos para iniciar la votacion.')</script>";
                     }
                 }
             }
 
             else{
-                echo "Debe de haber al menos 2 diputados activos para iniciar la votacion.";
+                echo "<script> alert('Debe de haber al menos 2 diputados activos para iniciar la votacion.')</script>";
             }
         }
         
     }else{
                                 
-        echo "Debe de haber al menos 2 presidentes activos para iniciar la votacion.";
+        echo "<script> alert('Debe de haber al menos 2 presidentes activos para iniciar la votacion.')</script>";
     }
 
 }

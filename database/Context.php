@@ -8,7 +8,7 @@ class Context{
     {
         $this->filehandler = new JsonFileHandler($directory,"configuration");
         $configuration = $this->filehandler->ReadConfiguration();
-        $this->db = new mysqli("localhost","root","Msi1997809","proyecto_final");
+        $this->db = new mysqli("localhost","root","","proyecto_final"); //Msi1997809
 
         if($this->db->connect_error){
             

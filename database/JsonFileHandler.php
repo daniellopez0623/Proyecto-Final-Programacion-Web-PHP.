@@ -3,10 +3,11 @@ class JsonFileHandler implements FileHandler{
 
 public $directory;
 public $filename;
-function __construct($directory, $filename){
-$this->directory = $directory;
-$this->filename = $filename;
 
+function __construct($directory, $filename){
+
+  $this->directory = $directory;
+  $this->filename = $filename;
 }
 
 

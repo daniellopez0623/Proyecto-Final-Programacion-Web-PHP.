@@ -48,7 +48,7 @@ class candidatoservice implements Iserviciobase{
     public function GetlistaP(){
 
         $listarcandidato = array();
-
+ 
         $stmt = $this->context->db->prepare("select * from candidatos where puesto_aspira = 1 and estado = 1");
         $stmt->execute();
         $result= $stmt->get_result();

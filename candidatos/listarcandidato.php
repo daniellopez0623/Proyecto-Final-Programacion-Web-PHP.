@@ -14,6 +14,8 @@ $service = new candidatoservice("database");
 $listarcandidato = $service->Getlista();
 
 
+
+
 ?>
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -84,6 +86,4 @@ $listarcandidato = $service->Getlista();
             return false;
         }
     }
-  
- 
-    </script>
+  </script>
