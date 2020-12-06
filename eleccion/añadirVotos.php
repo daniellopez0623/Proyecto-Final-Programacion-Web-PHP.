@@ -10,12 +10,12 @@ require_once "../database/FileHandler.php";
 require_once "../database/JsonFileHandler.php";
 require_once "../candidatos/candidato.php";
 
-require_once "../PHPMailer/Exception.php";
-require_once "../PHPMailer/PHPMailer.php";
-require_once "../PHPMailer/SMTP.php";
-require_once "../email/emailHandler/emailHandler.php";
+//require_once "../PHPMailer/Exception.php";
+//require_once "../PHPMailer/PHPMailer.php";
+//require_once "../PHPMailer/SMTP.php";
+//require_once "../email/emailHandler/emailHandler.php";
 
-$emailHandler = new emailHandler("../email/emailHandler");
+//$emailHandler = new emailHandler("../email/emailHandler");
 
 //$emailHandler->sendEmail("hardawaym13@gmail.com","prueba prueba","prueba todo bien");
 
@@ -46,20 +46,22 @@ $islogged = false;
 // var_dump($_GET['VPresidente']);
 // var_dump($_GET['id']);
 
-if(isset($_GET['VPresidente']) && $_GET['VDiputado'] && $_GET['VSenador'] && $_GET['id']){
+if(isset($_GET['VPresidente']) || $_GET['VDiputado'] || $_GET['VSenador'] || $_GET['VAlcalde']){
 
     $VPresidente = $_GET['VPresidente'];
     $VDiputado = $_GET['VDiputado'];
     $VSenador = $_GET['VSenador'];
-    $VAlcalde = $_GET['id'];
+    $VAlcalde = $_GET['VAlcalde'];
 
     $service->agregarVotosP($VPresidente);
     $service->agregarVotosD($VDiputado);
     $service->agregarVotosS($VSenador);
     $service->agregarVotosA($VAlcalde);
 
-    // header('location: ../index.php');
-    // exit();
+    var_dump($_GET['VDiputado']);
+    var_dump($_GET['VSenador']);
+    header('location: ../index.php');
+    exit();
 }
 
 ?>

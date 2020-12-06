@@ -31,6 +31,22 @@ include "../layout/layout.php";
     </div>
   </div>
 
+  <div class="row">
+  <div class="col-md-4">
+    <div class="card mb-2 shadow-sm">
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+      focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Resultado de votacion</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Resultado de votacion</text></svg>
+      <div class="card-body bg-dark">
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="btn-group">
+            <a href="../eleccion/resultadoEleccion.php" type="button" class="btn btn-primary btn-sm">Ver</a>
+            
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-md-4">
     <div class="card mb-2 shadow-sm">
       <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"

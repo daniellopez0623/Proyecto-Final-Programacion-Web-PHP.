@@ -1,7 +1,7 @@
 <?php 
 
 include "../layout/layout.php";
- require_once '../database/servicio.php';
+require_once '../database/servicio.php';
 require_once "../database/Iserviciobase.php";
 require_once "ciudadanoservice.php";
 require_once "../database/Context.php";

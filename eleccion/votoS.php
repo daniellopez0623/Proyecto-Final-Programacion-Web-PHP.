@@ -34,17 +34,47 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad']!=nu
 
 }
 
-var_dump($_GET['VPresidente']);
-var_dump($_GET['id']);
+// var_dump($_GET['VPresidente']);
+// var_dump($_GET['id']);
 
-$VPresidente = $_GET['VPresidente'];
-$VDiputado = $_GET['id'];
+// $VPresidente = $_GET['VPresidente'];
+$VPresidente = 0;
+if(isset($_GET['VPresidente'])){
+
+    var_dump($_GET['VPresidente']. "VPresidente");
+    $VPresidente = $_GET['VPresidente'];
+}
+$VDiputado = 0;
+if(isset($_GET['VDiputado'])){
+
+    var_dump($_GET['VDiputado']. "diputado");
+
+    $VDiputado = $_GET['VDiputado'] . "Diputado";
+}
 
 $service = new candidatoservice("../database");
 
 $listarcandidato = $service->GetlistaS();
 
+$mysqli = new mysqli("localhost", "root", "", "proyecto_final");
 
+if (mysqli_connect_errno()) {
+    printf("Conexión fallida: %s\n", mysqli_connect_error());
+    exit();
+}
+
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 4 and c.estado = 1")){
+    
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
+
+    $cantAcalde = false;
+    if($row_cnt >= 1){
+
+        $cantAcalde = true;
+    }
+}
 ?>
 
 <body class="text-center">
@@ -90,8 +120,14 @@ $listarcandidato = $service->GetlistaS();
                             <?php else: ?>
                             <td>Inactivo</td>
                             <?php endif; ?></h6>
-                        <a href="votoA.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                        <td><a href="votoA.php?id=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente; ?>&VDiputado=<?php echo $VDiputado; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        
+                        <?php if($cantAcalde):?>
+                            <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
+                            <td><a href="votoA.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        <?php else: ?>
+                            <td><a href="añadirVotos.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        <?php endif; ?></h6>                                
+                        
                     </div>
 
                 </div>
@@ -101,6 +137,7 @@ $listarcandidato = $service->GetlistaS();
             </div>
             <br>
             <?php printFooter(true); ?>
+            
             <script type="text/javascript">
             function confirmar() {
 

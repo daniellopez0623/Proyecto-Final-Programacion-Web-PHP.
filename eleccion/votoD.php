@@ -34,10 +34,19 @@ $listarcandidato = $service->GetlistaD();
 
 $islogged = false;
 
-$VPresidente = $_GET["id"];
 
-var_dump($VPresidente);
+$VPresidente = 0;
+if(isset($_GET['VPresidente'])){
+    
+    $VPresidente = $_GET['VPresidente'];
+}
 
+$mysqli = new mysqli("localhost", "root", "", "proyecto_final");
+
+if (mysqli_connect_errno()) {
+    printf("Conexión fallida: %s\n", mysqli_connect_error());
+    exit();
+}
 
 
 if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad'] != null){
@@ -46,6 +55,30 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad'] != 
     $islogged = true;
 }
 
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 3 and c.estado = 1")){
+
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
+    
+    $cantSenador = false;
+    if($row_cnt >= 1){
+
+        $cantSenador = true;
+    }
+}
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 4 and c.estado = 1")){
+
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
+    
+    $cantAlcalde = false;
+    if($row_cnt >= 1){
+
+        $cantAlcalde = true;
+    }
+}
 ?>
 
 <body class="text-center">
@@ -62,7 +95,7 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad'] != 
 
             <div class="row">
 
-                <?php foreach ($listarcandidato as $candidato) : ?>
+            <?php foreach ($listarcandidato as $candidato) : ?>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
@@ -90,12 +123,17 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad'] != 
                             <?php else: ?>
                             <td>Inactivo</td>
                             <?php endif; ?></h6>
-                        <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                        <td><a href="votoS.php?id=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
                         
+                            <?php if($cantSenador):?>
+                                <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
+                                <td><a href="votoS.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                            <?php elseif($cantAlcalde):?>
+                                <td><a href="VotoA.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                            <?php else:?>
+                                <td><a href="añadirVotos.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                            <?php endif; ?></h6>                                 
+                        </div>
                     </div>
-
-                </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <?php endforeach; ?>

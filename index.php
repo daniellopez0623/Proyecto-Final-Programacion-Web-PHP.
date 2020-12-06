@@ -20,7 +20,6 @@ $service = new userservice("database");
 
 // $service->GetlistaP();
 
-
 $mysqli = new mysqli("localhost", "root", "", "proyecto_final");
 
 if (mysqli_connect_errno()) {
@@ -33,78 +32,114 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $row_cnt = $result->num_rows;
     $row_cnt;
     $result->close();
-
-    if($row_cnt >= 2){
-
-        if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 2 and c.estado = 1")){
-
-            $row_cnt = $result->num_rows;
-            $row_cnt;
-            $result->close();
-
-            if($row_cnt >= 2){
-
-                if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 3 and c.estado = 1")){
-                    
-                    $row_cnt = $result->num_rows;
-                    $row_cnt;
-                    $result->close();
-
-                    if($row_cnt >= 2){
-                        
-                        if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 4 and c.estado = 1")){
-
-                            $row_cnt = $result->num_rows;
-                            $row_cnt;
-                            $result->close();
-
-                            if($row_cnt >= 2){
-                                
-                                if(isset($_POST['documento_dentidad'])){
-                        
-                                    $result = $service->login($_POST['documento_dentidad']);
-                                
-                                    if($result != null){
-                                        
-                                        $_SESSION['documento_dentidad'] = json_encode($result);
-                                
-                                        header("Location: eleccion/votoP.php");
-                                        exit();
-                                        
-                                    }else{
-                                
-                                        $message = "Cedula incorrecta";
-                                    }
-                                }
-
-                            }else{
-                                
-                                echo "<script> alert('Debe de haber al menos 2 alcalde activos para iniciar la votacion.')</script>";
-                            }
-                        }
-
-                    }else{
-                                
-                        echo "<script> alert('Debe de haber al menos 2 senadores activos para iniciar la votacion.')</script>";
-                    }
-                }
-            }
-
-            else{
-                echo "<script> alert('Debe de haber al menos 2 diputados activos para iniciar la votacion.')</script>";
+    
+    if($row_cnt >= 1){
+        
+        if(isset($_POST['documento_dentidad'])){
+                            
+            $result = $service->login($_POST['documento_dentidad']);
+        
+            if($result != null){
+                
+                $_SESSION['documento_dentidad'] = json_encode($result);
+        
+                header("Location: eleccion/votoP.php");
+                exit();
+                
+            }else{
+        
+                $message = "Cedula incorrecta";
             }
         }
-        
-    }else{
-                                
-        echo "<script> alert('Debe de haber al menos 2 presidentes activos para iniciar la votacion.')</script>";
     }
-
 }
-$mysqli->close();
-//var_dump($service);
 
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 2 and c.estado = 1")){
+    var_dump("aaa");
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
 
+    if($row_cnt >= 9){
+
+        if(isset($_POST['documento_dentidad'])){
+                    
+            $result = $service->login($_POST['documento_dentidad']);
+        
+            if($result != null){
+                
+                $_SESSION['documento_dentidad'] = json_encode($result);
+        
+                header("Location: eleccion/votoD.php");
+                exit();
+                
+            }else{
+        
+                $message = "Cedula incorrecta";
+            }
+        }
+    }
+}
+
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 3 and c.estado = 1")){
+    
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
+
+    if($row_cnt >= 1){                   
+
+        if(isset($_POST['documento_dentidad'])){
+            
+            $result = $service->login($_POST['documento_dentidad']);
+        
+            if($result != null){
+                
+                $_SESSION['documento_dentidad'] = json_encode($result);
+        
+                header("Location: eleccion/votoS.php");
+                exit();
+                
+            }else{
+        
+                $message = "Cedula incorrecta";
+            }
+        }
+    }
+}
+
+if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 4 and c.estado = 1")){
+
+    $row_cnt = $result->num_rows;
+    $row_cnt;
+    $result->close();
+    $mysqli->close();
+    var_dump("aaa");
+
+    if($row_cnt >= 9){
+        
+        if(isset($_POST['documento_dentidad'])){
+
+            $result = $service->login($_POST['documento_dentidad']);
+        
+            if($result != null){
+                
+                $_SESSION['documento_dentidad'] = json_encode($result);
+        
+                header("Location: eleccion/votoA.php");
+                exit();
+                
+            }else{
+        
+                $message = "Cedula incorrecta";
+            }
+        }
+    }else{
+        
+        echo "<script> alert('Debe de haber al menos 2 candidatos activos para iniciar la votacion.')</script>";
+    }
+}
+                                
 
 ?>
 <!DOCTYPE html>

@@ -38,22 +38,41 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad']!=nu
 
 }
 
-var_dump($_GET["VPresidente"]);
-var_dump($_GET["VDiputado"]);
-var_dump($_GET["id"]);
 
-$VPresidente = $_GET['VPresidente'];
-$VDiputado = $_GET['VDiputado'];
-$VSenador = $_GET['id'];
+$VPresidente = 0;
+if(isset($_GET["VPresidente"])){
+    
+    $VPresidente = $_GET["VPresidente"];
+    var_dump($_GET["VPresidente"] . "Presidente");
+}
+
+$VDiputado = 0;
+if(isset($_GET["VDiputado"])){
+    
+    $VDiputado = $_GET["VDiputado"];
+    var_dump($_GET['VDiputado']. "diputado");
+}
+
+$VSenador = 0;
+if(isset($_GET["Senador"])){
+    
+    $VSenador = $_GET["Senador"];
+    var_dump($_GET["Senador"] . "Senador");
+}
+
+
+
+
+
+// $VPresidente = $_GET['VPresidente'];
+// $VDiputado = $_GET['VDiputado'];
+// $VSenador = $_GET['id'];
 
 $service = new candidatoservice("../database");
 
 $listarcandidato = $service->GetlistaA();
 
-  echo "<script>
-            alert('Se Guardaron Correctamente Sus voto');
-            // window.location= '../index.php'
-        </script>";
+  
 ?>
 
 <body class="text-center">
@@ -96,7 +115,7 @@ $listarcandidato = $service->GetlistaA();
                             <td>Inactivo</td>
                             <?php endif; ?></h6>
                         <a href="../index.php" name="selectedCandidate" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                        <td><a href="añadirVotos.php?id=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente; ?>&VDiputado=<?php echo $VDiputado; ?>&VSenador=<?php echo $VSenador; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        <td><a href="añadirVotos.php?VAlcalde=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>&VSenador=<?php echo $VSenador ?>" class="btn btn-danger btnEliEdit">este</a></td>
                     </div>
 
                 </div>
