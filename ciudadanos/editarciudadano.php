@@ -2,8 +2,6 @@
 
 <?php 
 
-
-
 include "../layout/layout.php";
  require_once '../database/servicio.php';
 require_once "../database/Iserviciobase.php";
@@ -30,10 +28,8 @@ if(isset($_GET['id']  )){
 
         $service->editar($ciudadanoid,$actualizar);
 
-        var_dump('aaaaaa');
         header("location: listarciudadano.php");
         exit();
-
     }
 }
 ?>

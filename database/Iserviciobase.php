@@ -14,6 +14,4 @@ interface Iserviciobase{
     //public function GetlistaResultadoV();
 }
 
-
-
 ?>

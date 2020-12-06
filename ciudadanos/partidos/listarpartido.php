@@ -31,30 +31,30 @@ $listarpartido = $service->Getlista();
 <div class="row">
 
 <?php foreach ($listarpartido as $partido) : ?>
-    <div class="card text-white bg-dark cover-container" style=" width: 14rem";>
- <img class="bd-placeholder-img card-img-top" src="<?php echo "imagenes/partido/" .  $partido->logo_partido ?>" width="100%" height="150" role="img" aria-label="Placeholder: Thumbnail">
+  <div class="card text-white bg-dark cover-container" style=" width: 14rem";>
+  <h5><?php echo $partido->id?></h5>
+  <img class="bd-placeholder-img card-img-top" src="<?php echo "imagenes/partido/" .  $partido->logo_partido ?>" width="100%" height="150" role="img" aria-label="Placeholder: Thumbnail">
 
-                 <div class="card-body">
-                       <h5 class="card-title"> <?php echo $partido->nombre?></h5>
-                       <h5 class="card-subtitle mb-2"><?php echo $partido->descripcion?></h5>
-                      <h6 class="card-text">estado: <?php if ($partido->estado == 1): ?>
+  <div class="card-body">                       
+  <h5 class="card-title"> <?php echo $partido->nombre?></h5>
+  <h5 class="card-subtitle mb-2"><?php echo $partido->descripcion?></h5>
+  <h6 class="card-text"><strong>Estado:</strong> <?php if ($partido->estado == 1): ?>
 
-<td>Activo</td>
-<?php else: ?>
+  <td><strong>Activo</strong></td>
+  <?php else: ?>
 
-    <td>Inactivo</td>
+  <td><strong>Inactivo</strong></td>
 
-<?php endif ?></h6>
-                      <a href="editarpartido.php?id=<?php echo $partido->id; ?>" class="card-link btn btn-outline-primary">Editar</a>
-                      <a href="eliminarpartido.php?id=<?php echo $partido->id; ?>" class="card-link btn btn-outline-danger"
-                                    onclick="return confirmar()">Eliminar</a>
-                                    </div>
+  <?php endif ?></h6>
+  <a href="editarpartido.php?id=<?php echo $partido->id; ?>" class="card-link btn btn-outline-primary">Editar</a>
+  <a href="eliminarpartido.php?id=<?php echo $partido->id; ?>" class="card-link btn btn-outline-danger" onclick="return confirmar()">Eliminar</a>
+  </div>
 
-             </div>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-             <?php endforeach; ?>
-             </div>
+<?php endforeach; ?>
+</div>
 
 <?php printFooter(true); ?>
 <script type="text/javascript">

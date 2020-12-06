@@ -41,11 +41,6 @@ $servicio = new Servicio();
 
 $islogged = false;
 
-//añadorVotos
-
-// var_dump($_GET['VPresidente']);
-// var_dump($_GET['id']);
-
 if(isset($_GET['VPresidente']) || $_GET['VDiputado'] || $_GET['VSenador'] || $_GET['VAlcalde']){
 
     $VPresidente = $_GET['VPresidente'];
@@ -61,6 +56,7 @@ if(isset($_GET['VPresidente']) || $_GET['VDiputado'] || $_GET['VSenador'] || $_G
     var_dump($_GET['VDiputado']);
     var_dump($_GET['VSenador']);
     header('location: ../index.php');
+    echo "<script>alert('Se guardaron los votos correctamente');</script>";
     exit();
 }
 

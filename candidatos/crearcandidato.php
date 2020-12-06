@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="..assents/css/stlye.css">
 
-
 <?php 
 
 include "../layout/layout.php";
@@ -12,12 +11,7 @@ require_once "../database/FileHandler.php";
 require_once "../database/JsonFileHandler.php";
 require_once "candidato.php";
 
-
-
-
 $service = new candidatoservice("database");
-
-
 
 if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['partido_pertenece']) && isset($_POST['puesto_aspira']) && isset($_FILES['foto_perfil']) && isset($_POST['estado']) && isset($_POST['estado'])){
 
@@ -25,23 +19,14 @@ if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['partido
 
     $newcandidato->enviardatos(0,$_POST['nombre'],$_POST['apellido'],$_POST['partido_pertenece'],$_POST['puesto_aspira'],$_POST['foto_perfil'],$_POST['estado'],$_POST['votos']);
 
-    //echo '<script>alert("Ciudadano añadido")</script>'; 
-    var_dump($_POST['estado']);    
-    var_dump($_POST['estado']);
-    var_dump($newcandidato);
-    
     $service->añadir($newcandidato);
-   
-    
 
     header("location: listarcandidato.php");
     exit();
 }
-
 ?>
 
 <?php printHeader(true); ?>
-
 
 <div class="card text-white bg-dark mb-3">
     <h5 class="card-header">Crear Candidato</h5>

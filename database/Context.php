@@ -14,7 +14,6 @@ class Context{
             
             exit('Error connecting to database');
         }
-
     }
 }
 

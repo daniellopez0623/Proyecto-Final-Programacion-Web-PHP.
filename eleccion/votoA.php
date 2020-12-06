@@ -60,14 +60,6 @@ if(isset($_GET["Senador"])){
     var_dump($_GET["Senador"] . "Senador");
 }
 
-
-
-
-
-// $VPresidente = $_GET['VPresidente'];
-// $VDiputado = $_GET['VDiputado'];
-// $VSenador = $_GET['id'];
-
 $service = new candidatoservice("../database");
 
 $listarcandidato = $service->GetlistaA();
@@ -114,8 +106,7 @@ $listarcandidato = $service->GetlistaA();
                             <?php else: ?>
                             <td>Inactivo</td>
                             <?php endif; ?></h6>
-                        <a href="../index.php" name="selectedCandidate" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                        <td><a href="añadirVotos.php?VAlcalde=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>&VSenador=<?php echo $VSenador ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        <td><a href="añadirVotos.php?VAlcalde=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>&VSenador=<?php echo $VSenador ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                     </div>
 
                 </div>

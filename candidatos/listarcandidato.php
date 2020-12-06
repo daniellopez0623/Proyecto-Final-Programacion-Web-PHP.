@@ -27,7 +27,6 @@ $listarcandidato = $service->Getlista();
 <h3 class="font-weight-bold">Candidatos</h3>
 <br>
 
-
 <div class="row">
 
 <?php foreach ($listarcandidato as $candidato) : ?>
@@ -72,15 +71,3 @@ $listarcandidato = $service->Getlista();
 
   <?php endforeach; ?>
 </div>
-
-<?php printFooter(true); ?>
-<script type="text/javascript">
-    function confirmar() {
-        var respuesta = confirm("Seguro de eliminar a este Candidato??");
-        if (respuesta == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-  </script>

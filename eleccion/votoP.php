@@ -70,7 +70,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
     
     $cantDiputado = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantDiputado = true;
     }
@@ -82,7 +82,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
 
     $cantSenador = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantSenador = true;
     }
@@ -94,7 +94,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
 
     $cantAlcalde = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantAlcalde = true;
     }
@@ -139,14 +139,13 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                 <?php endif; ?></h6>
             
                 <?php if($cantDiputado):?>
-                    <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                    <td><a href="votoD.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                    <td><a href="votoD.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                 <?php elseif($cantSenador):?>
-                    <td><a href="VotoS.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                    <td><a href="VotoS.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                 <?php elseif($cantAlcalde):?>
-                    <td><a href="VotoA.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                    <td><a href="VotoA.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                 <?php else:?>
-                    <td><a href="añadirVotos.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                    <td><a href="añadirVotos.php?VPresidente=<?php echo $candidato->id; ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                 <?php endif; ?></h6> 
             
         </div>
@@ -158,13 +157,3 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
 </div>
 <br>
 <?php printFooter(true); ?>
-<script type="text/javascript">
-function confirmar() {
-    var respuesta = confirm("Esta seguro de votar por este candidato?");
-    if (respuesta == true) {
-        return true;
-    } else {
-        return false;
-    }
-}
-</script>

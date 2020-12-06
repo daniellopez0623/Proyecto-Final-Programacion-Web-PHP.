@@ -11,7 +11,7 @@ private $context;
 
     public function login($documento_dentidad){
 
-        $stmt= $this->context->db->prepare("select * from ciudadanos where documento_dentidad = ?");
+        $stmt= $this->context->db->prepare("select * from ciudadanos where documento_dentidad = ? and estado = 1");
         $stmt->bind_param("s",$documento_dentidad);
         $result= $stmt->execute();
         $result= $stmt->get_result();

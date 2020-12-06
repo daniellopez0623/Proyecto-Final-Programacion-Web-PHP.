@@ -14,7 +14,6 @@ $service = new ciudadanoservice("database");
 $listarciudadano = $service->Getlista();
 
 ?>
-       
 
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -25,7 +24,6 @@ $listarciudadano = $service->Getlista();
                 </nav>
             </div>
             <?php printHeader(true); ?>
-
 
             <h3 class="font-weight-bold">Ciudadanos</h3>
             <br>
@@ -41,40 +39,31 @@ $listarciudadano = $service->Getlista();
                         <h6 class="card-text"><?php echo $ciudadano->email?></h6>
                         <h6 class="card-text" id="estado">estado:<?php if ($ciudadano->estado == 1): ?>
 
-<td>Activo</td>
-<?php else: ?>
+                        <td>Activo</td>
+                        <?php else: ?>
 
-    <td>Inactivo</td>
+                            <td>Inactivo</td>
 
-<?php endif ?>
-                        </h6>  <a href="editarciudadano.php?id=<?php echo $ciudadano->documento_dentidad; ?>" class="card-link btn btn-outline-primary">Editar</a>
-                        <a href="eliminarciudadano.php?id=<?php echo $ciudadano->documento_dentidad; ?>"
-                            class="card-link btn btn-outline-danger" onclick="return confirmar()">Eliminar</a>
-
-</div>
-
-
+                        <?php endif ?>
+                                </h6>  <a href="editarciudadano.php?id=<?php echo $ciudadano->documento_dentidad; ?>" class="card-link btn btn-outline-primary">Editar</a>
+                                <a href="eliminarciudadano.php?id=<?php echo $ciudadano->documento_dentidad; ?>" class="card-link btn btn-outline-danger" onclick="return confirmar()">Eliminar</a>
 
                     </div>
-                    &nbsp; &nbsp;
-                  
-                    <?php endforeach; ?>
-
                 </div>
-                
-    
+    &nbsp; &nbsp;
+    <?php endforeach; ?>
+</div>
+<?php printFooter(true); ?>
 
-            <?php printFooter(true); ?>
+<script type="text/javascript">
+function confirmar() {
+var respuesta = confirm("Seguro de eliminar a este Ciudadano??");
+if (respuesta == true) {
+    return true;
+} else {
+    return false;
+}
+}
 
-            <script type="text/javascript">
-            function confirmar() {
-                var respuesta = confirm("Seguro de eliminar a este Ciudadano??");
-                if (respuesta == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-    
 
-            </script>
+</script>

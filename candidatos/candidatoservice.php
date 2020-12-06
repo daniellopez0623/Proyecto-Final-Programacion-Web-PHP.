@@ -11,6 +11,39 @@ class candidatoservice implements Iserviciobase{
         $this->context = new Context($directory);
     }
 
+    // public function Getlista(){
+
+    //     $listarcandidato = array();
+    
+    //     $stmt = $this->context->db->prepare("select * from candidatos");
+    //     $stmt->execute();
+    //     $result= $stmt->get_result();
+    
+    //     if($result->num_rows === 0){
+            
+    //         return $listarcandidato;
+
+    //     }else{
+            
+    //         while($row = $result->fetch_object()){
+                
+    //             $candidato = new candidato();
+
+    //             $candidato->id = $row->id;
+    //             $candidato->nombre = $row->nombre;
+    //             $candidato->apellido = $row->apellido;
+    //             $candidato->partido_pertenece = $row->partido_pertenece;
+    //             $candidato->puesto_aspira = $row->puesto_aspira;
+    //             $candidato->foto_perfil = $row->foto_perfil;
+    //             $candidato->estado = $row->estado;
+                
+    //             array_push($listarcandidato,$candidato); 
+    //         }
+    //     }
+    //     return $listarcandidato;
+    //     $stmt->close();
+    // }
+
     public function Getlista(){
 
         $listarcandidato = array();
@@ -40,10 +73,10 @@ class candidatoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
     }
+
 
     public function GetlistaP(){
 
@@ -74,7 +107,6 @@ class candidatoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
     }
@@ -108,7 +140,6 @@ class candidatoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
     }
@@ -118,7 +149,6 @@ class candidatoservice implements Iserviciobase{
         $listarcandidato = array();
     
         $stmt = $this->context->db->prepare("select * from candidatos where puesto_aspira = 3 and estado = 1");
-        // $stmt = $this->context->db->prepare("select * from candidatos inner join puesto_electivo on candidatos.id = puesto_electivo.id WHERE puesto_electivo.nombre = 'Presidente'");
         $stmt->execute();
         $result= $stmt->get_result();
     
@@ -143,11 +173,10 @@ class candidatoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
-    
     }
+
     public function GetlistaA(){
 
         $listarcandidato = array();
@@ -169,8 +198,6 @@ class candidatoservice implements Iserviciobase{
                 $candidato->id = $row->id;
                 $candidato->nombre = $row->nombre;
                 $candidato->apellido = $row->apellido;
-                // $candidato->partido = $row->partido;
-                // $candidato->puesto= $row->Puesto;
                 $candidato->partido_pertenece = $row->partido_pertenece;
                 $candidato->puesto_aspira = $row->puesto_aspira;
                 $candidato->foto_perfil = $row->foto_perfil;
@@ -179,10 +206,8 @@ class candidatoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
-    
     }
 
     public function GetByid($id){
@@ -212,7 +237,6 @@ class candidatoservice implements Iserviciobase{
                 $candidato->estado = $row->estado;
             }
         }
-
         return $candidato; 
         $stmt->close();
     }
@@ -299,7 +323,6 @@ class candidatoservice implements Iserviciobase{
                     $stmt->execute();
                     $stmt->close();
                 }
-                
             }
         }
     }
@@ -312,7 +335,6 @@ class candidatoservice implements Iserviciobase{
         $stmt->bind_param("ii",$entidad->voto,$id);
         $stmt->execute();
         $stmt->close();
-            
     }
 
     public function GetVotos($id){
@@ -333,28 +355,16 @@ class candidatoservice implements Iserviciobase{
             
             while($row = $result->fetch_object()){
 
-                // $candidato->id = $row->id;
-                // $candidato->nombre = $row->nombre;
-                // $candidato->apellido = $row->apellido;
-                // $candidato->partido_pertenece = $row->partido_pertenece;
-                // $candidato->puesto_aspira = $row->puesto_aspira;
-                // $candidato->foto_perfil = $row->foto_perfil;
-                // $candidato->estado = $row->estado;
                 $candidato->votos = $row->votos;
             }
         }
-
         return $candidato; 
         $stmt->close();
-    
     }
 
     public function agregarVotosP($id){
     
         $elemento= $this->GetByid($id);
-        
-        //UPDATE tabla SET campo=campo+1 WHERE condicion
-        
         $stmt = $this->context->db->prepare("update candidatos set votos = votos + 1 where id = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
@@ -364,9 +374,6 @@ class candidatoservice implements Iserviciobase{
     public function agregarVotosD($id){
     
         $elemento= $this->GetByid($id);
-        
-        //UPDATE tabla SET campo=campo+1 WHERE condicion
-        
         $stmt = $this->context->db->prepare("update candidatos set votos = votos + 1 where id = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
@@ -376,9 +383,6 @@ class candidatoservice implements Iserviciobase{
     public function agregarVotosS($id){
     
         $elemento= $this->GetByid($id);
-        
-        //UPDATE tabla SET campo=campo+1 WHERE condicion
-        
         $stmt = $this->context->db->prepare("update candidatos set votos = votos + 1 where id = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
@@ -388,13 +392,9 @@ class candidatoservice implements Iserviciobase{
     public function agregarVotosA($id){
     
         $elemento= $this->GetByid($id);
-        
-        //UPDATE tabla SET campo=campo+1 WHERE condicion
-        
         $stmt = $this->context->db->prepare("update candidatos set votos = votos + 1 where id = ?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
         $stmt->close();
     }
-
 }

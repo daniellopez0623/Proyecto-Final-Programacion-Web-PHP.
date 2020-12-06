@@ -21,6 +21,7 @@ class ciudadanoservice implements Iserviciobase{
         if($result->num_rows === 0){
             
             return $listarciudadano;
+
         }else{
             
             while($row = $result->fetch_object()){
@@ -34,10 +35,8 @@ class ciudadanoservice implements Iserviciobase{
                 $ciudadano->estado = $row->estado;
 
                 array_push($listarciudadano,$ciudadano);
-                
             }
         }
-        
         return $listarciudadano;
         $stmt->close();
     }
@@ -71,7 +70,6 @@ class ciudadanoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
     }
@@ -105,7 +103,6 @@ class ciudadanoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();    
     }
@@ -139,7 +136,6 @@ class ciudadanoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();    
     }
@@ -173,7 +169,6 @@ class ciudadanoservice implements Iserviciobase{
                 array_push($listarcandidato,$candidato); 
             }
         }
-        
         return $listarcandidato;
         $stmt->close();
     }
@@ -221,7 +216,6 @@ class ciudadanoservice implements Iserviciobase{
             $ciudadano->estado = $row->estado;
             }
         }
-
         return $ciudadano; 
         $stmt->close();
     }
@@ -235,5 +229,4 @@ class ciudadanoservice implements Iserviciobase{
         $stmt->execute();
         $stmt->close();
     }
-    
 }

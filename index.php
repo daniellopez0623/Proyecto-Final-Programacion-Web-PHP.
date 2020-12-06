@@ -27,13 +27,16 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 1 and c.estado = 1")){
+//SELECT * FROM candidatos c WHERE C.puesto_aspira = 1 and c.estado = 1"
+if($result = $mysqli->query("SELECT * FROM candidatos c
+inner JOIN puesto_electivo p_e on c.id = p_e.id
+INNER JOIN partidos p on p_e.id = p.id  where and c.estado = 1 and p.estado = 1 ")){
 
     $row_cnt = $result->num_rows;
     $row_cnt;
     $result->close();
     
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
         
         if(isset($_POST['documento_dentidad'])){
                             
@@ -54,13 +57,15 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     }
 }
 
-if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 2 and c.estado = 1")){
+if($result = $mysqli->query("SELECT c.id,c.nombre,c.apellido,p.nombre as partido_pertenece,p_e.nombre as puesto_aspira,c.foto_perfil,c.estado FROM candidatos c
+inner JOIN puesto_electivo p_e on c.id = p_e.id
+INNER JOIN partidos p on p_e.id = p.id  where c.puesto_aspira = 2 and c.estado = 1 and p.estado = 1 ")){
     var_dump("aaa");
     $row_cnt = $result->num_rows;
     $row_cnt;
     $result->close();
 
-    if($row_cnt >= 9){
+    if($row_cnt >= 2){
 
         if(isset($_POST['documento_dentidad'])){
                     
@@ -81,13 +86,15 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     }
 }
 
-if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 3 and c.estado = 1")){
+if($result = $mysqli->query("SELECT c.id,c.nombre,c.apellido,p.nombre as partido_pertenece,p_e.nombre as puesto_aspira,c.foto_perfil,c.estado FROM candidatos c
+inner JOIN puesto_electivo p_e on c.id = p_e.id
+INNER JOIN partidos p on p_e.id = p.id  where c.puesto_aspira = 3 and c.estado = 1 and p.estado = 1 ")){
     
     $row_cnt = $result->num_rows;
     $row_cnt;
     $result->close();
 
-    if($row_cnt >= 1){                   
+    if($row_cnt >= 2){                   
 
         if(isset($_POST['documento_dentidad'])){
             
@@ -108,15 +115,16 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     }
 }
 
-if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 4 and c.estado = 1")){
+if($result = $mysqli->query("SELECT c.id,c.nombre,c.apellido,p.nombre as partido_pertenece,p_e.nombre as puesto_aspira,c.foto_perfil,c.estado FROM candidatos c
+inner JOIN puesto_electivo p_e on c.id = p_e.id
+INNER JOIN partidos p on p_e.id = p.id  where c.puesto_aspira = 4 and c.estado = 1 and p.estado = 1 ")){
 
     $row_cnt = $result->num_rows;
     $row_cnt;
     $result->close();
     $mysqli->close();
-    var_dump("aaa");
 
-    if($row_cnt >= 9){
+    if($row_cnt >= 2){
         
         if(isset($_POST['documento_dentidad'])){
 
@@ -131,7 +139,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                 
             }else{
         
-                $message = "Cedula incorrecta";
+                $message = "Cedula incorrecta o el ciudadano ya ejercio su derecho al voto";
             }
         }
     }else{

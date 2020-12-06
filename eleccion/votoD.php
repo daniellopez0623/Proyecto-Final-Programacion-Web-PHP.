@@ -62,7 +62,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
     
     $cantSenador = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantSenador = true;
     }
@@ -74,7 +74,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
     
     $cantAlcalde = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantAlcalde = true;
     }
@@ -126,11 +126,11 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                         
                             <?php if($cantSenador):?>
                                 <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                                <td><a href="votoS.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                                <td><a href="votoS.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                             <?php elseif($cantAlcalde):?>
-                                <td><a href="VotoA.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                                <td><a href="VotoA.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                             <?php else:?>
-                                <td><a href="añadirVotos.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                                <td><a href="añadirVotos.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                             <?php endif; ?></h6>                                 
                         </div>
                     </div>

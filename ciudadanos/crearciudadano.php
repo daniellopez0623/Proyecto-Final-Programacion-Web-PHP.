@@ -2,8 +2,6 @@
 
 <?php 
 
-
-
 include "../layout/layout.php";
  require_once '../database/servicio.php';
 require_once "../database/Iserviciobase.php";
@@ -15,22 +13,20 @@ require_once "ciudadano.php";
 
 $service = new ciudadanoservice("database");
 
-if (isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido'])
-&& isset($_POST['email'])) {
+if (isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'])) {
 
-  $newciudadano = new ciudadano();
-  
-   $newciudadano->enviardatos($_POST['id'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
+    $newciudadano = new ciudadano();
 
-   echo '<script>alert("Ciudadano añadido")</script>'; 
+    $newciudadano->enviardatos($_POST['id'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
+
+    echo '<script>alert("Ciudadano añadido")</script>'; 
+
+    $service->añadir($newciudadano);
+
+    header("location: listarciudadano.php");
+    exit();
   
-  $service->añadir($newciudadano);
-  
-      header("location: listarciudadano.php");
-      exit();
-  
-  
-    }
+}
 ?>
 
 <body class="text-center">

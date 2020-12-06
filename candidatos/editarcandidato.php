@@ -15,14 +15,10 @@ require_once "candidato.php";
 $service = new candidatoservice("database");
 if(isset($_GET['id']  )){
 
-  $candidatoid = $_GET['id'];
-  $elemento = $service->GetByid($candidatoid);
+    $candidatoid = $_GET['id'];
+    $elemento = $service->GetByid($candidatoid);
 
-  
-  
     if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['partido_pertenece']) && isset($_POST['puesto_aspira']) && isset($_POST['estado'])){
-        
-        
         
         $actualizar = new candidato();
     
@@ -93,7 +89,5 @@ if(isset($_GET['id']  )){
     
 </body>
 </html>
-
-
 
             <?php printFooter(true); ?>

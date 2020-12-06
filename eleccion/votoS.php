@@ -34,10 +34,6 @@ if(isset($_SESSION['documento_dentidad']) && $_SESSION['documento_dentidad']!=nu
 
 }
 
-// var_dump($_GET['VPresidente']);
-// var_dump($_GET['id']);
-
-// $VPresidente = $_GET['VPresidente'];
 $VPresidente = 0;
 if(isset($_GET['VPresidente'])){
 
@@ -70,7 +66,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     $result->close();
 
     $cantAcalde = false;
-    if($row_cnt >= 1){
+    if($row_cnt >= 2){
 
         $cantAcalde = true;
     }
@@ -121,11 +117,10 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                             <td>Inactivo</td>
                             <?php endif; ?></h6>
                         
-                        <?php if($cantAcalde):?>
-                            <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
-                            <td><a href="votoA.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                        <?php if($cantAcalde):?>                            
+                            <td><a href="votoA.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                         <?php else: ?>
-                            <td><a href="añadirVotos.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">este</a></td>
+                            <td><a href="añadirVotos.php?Senador=<?php echo $candidato->id; ?>&VPresidente=<?php echo $VPresidente ?>&VDiputado=<?php echo $VDiputado ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                         <?php endif; ?></h6>                                
                         
                     </div>
