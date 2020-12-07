@@ -43,21 +43,18 @@ $VPresidente = 0;
 if(isset($_GET["VPresidente"])){
     
     $VPresidente = $_GET["VPresidente"];
-    var_dump($_GET["VPresidente"] . "Presidente");
 }
 
 $VDiputado = 0;
 if(isset($_GET["VDiputado"])){
     
     $VDiputado = $_GET["VDiputado"];
-    var_dump($_GET['VDiputado']. "diputado");
 }
 
 $VSenador = 0;
 if(isset($_GET["Senador"])){
     
     $VSenador = $_GET["Senador"];
-    var_dump($_GET["Senador"] . "Senador");
 }
 
 $service = new candidatoservice("../database");
@@ -66,7 +63,7 @@ $listarcandidato = $service->GetlistaA();
 
   
 ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-10%">
@@ -92,9 +89,9 @@ $listarcandidato = $service->GetlistaA();
                         <h5 class="card-title"> <?php echo $candidato->nombre?></h5>
                         <h5 class="card-subtitle mb-2"><?php echo $candidato->apellido?></h5>
                         <h6 class="card-text">Partido: <?php if ($candidato->partido_pertenece == 1): ?>
-                            <td>PLD</td>
+                            <td>PRM</td>
                             <?php else: ?>
-                            <td>PRD</td>
+                                <td>PLD</td>
                             <?php endif; ?></h6>
                         <h6 class="card-text">Puesto: <?php if ($candidato->puesto_aspira == 4): ?>
                             <td>Alcalde</td>

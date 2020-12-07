@@ -102,7 +102,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
 ?>
 
 <?php printHeader(true); ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <h3 class="font-weight-bold">Presidentes</h3>
 
 <br>
@@ -112,8 +112,10 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;
-
+    
     <div class="card text-white bg-dark cover-container" style=" width: 14rem" ;>
+    
+    
         <img class="bd-placeholder-img card-img-top"
             src="<?php echo "../candidatos/imagenes/candidato/" .  $candidato->foto_perfil ?>" width="100%" height="150"
             role="img" aria-label="Placeholder: Thumbnail">
@@ -123,9 +125,9 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
             <h5 class="card-title"> <?php echo $candidato->nombre?></h5>
             <h5 class="card-subtitle mb-2"><?php echo $candidato->apellido?></h5>
             <h6 class="card-text">Partido: <?php if($candidato->partido_pertenece == 1): ?>
-                <td>PLD</td>
+                <td>PRM</td>
                 <?php else: ?>
-                <td>PRD</td>
+                    <td>PLD</td>
                 <?php endif; ?></h6>
             <h6 class="card-text">Puesto: <?php if($candidato->puesto_aspira == 1): ?>
                 <td>Presidente</td>
@@ -151,7 +153,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
         </div>
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+    
     <?php endforeach; ?>
 
 </div>

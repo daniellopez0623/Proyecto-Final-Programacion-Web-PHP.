@@ -38,15 +38,13 @@ if(isset($_GET['id'])){
   }
 }
 ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <?php printHeader(true); ?>
 
 <div class="card text-white bg-dark mb-3">
     <h5 class="card-header">Editar Partido</h5>
     <div class="card-body">
         <form enctype="multipart/form-data" action="editarpuesto.php?id=<?php echo  $elemento->id;?>" method="POST">
-
-
             <div class="form-group">
                 <input type="text" class="form-control" id="nombre" name="nombre"
                     value="<?php echo $elemento->nombre;?>" placeholder="nombre">
@@ -56,8 +54,6 @@ if(isset($_GET['id'])){
                 <input type="text" class="form-control" id="descripcion" value="<?php echo $elemento->descripcion;?>"
                     name="descripcion" placeholder="descripcion">
             </div>
-
-
             <div class="form-group ">
             <input type="checkbox" style="width: 1rem" id="read" name="estado"  value="1" 
                              placeholder="estado" value="<?php echo $elemento->estado;?>"> <label >Activo</label> 

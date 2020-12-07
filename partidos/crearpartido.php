@@ -31,7 +31,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) &&  isset($_FILES['lo
 ?>
 
 <?php printHeader(true); ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <div class="card text-white bg-dark mb-3">
     <h5 class="card-header">Crear Partido</h5>
     <div class="card-body">

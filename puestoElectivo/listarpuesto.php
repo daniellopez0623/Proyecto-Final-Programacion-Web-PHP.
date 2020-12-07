@@ -25,14 +25,9 @@ $listarpuesto = $service->Getlista();
     </div>
 <?php printHeader(true); ?>
 
-
- 
-
-
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <h3 class="font-weight-bold">Puestos</h3>
 <br>
-
 
 <div class="row">
 
@@ -43,17 +38,13 @@ $listarpuesto = $service->Getlista();
                        <h5 class="card-title"> <?php echo $puesto->nombre?></h5>
                        <h5 class="card-subtitle mb-2"><?php echo $puesto->descripcion?></h5>
                       <h6 class="card-text">estado: <?php if ($puesto->estado == 1): ?>
-
 <td>Activo</td>
 <?php else: ?>
-
     <td>Inactivo</td>
-
 <?php endif ?></h6>
                       <a href="editarpuesto.php?id=<?php echo $puesto->id; ?>" class="card-link btn btn-outline-primary">Editar</a>
-                      <a href="eliminarpuesto.php?id=<?php echo $puesto->id; ?>" class="card-link btn btn-outline-danger"
-                                    onclick="return confirmar()">Eliminar</a>
-                                    </div>
+                      <a href="eliminarpuesto.php?id=<?php echo $puesto->id; ?>" class="card-link btn btn-outline-danger" onclick="return confirmar()">Eliminar</a>
+                    </div>
 
              </div>
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

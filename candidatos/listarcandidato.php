@@ -17,7 +17,17 @@ $listarcandidato = $service->Getlista();
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-10%">
-    <div class="inner">
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="inner">
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link active" href="../admin/admin.php">Atras</a>
       </nav>
@@ -61,13 +71,16 @@ $listarcandidato = $service->Getlista();
     <?php else: ?>
     <td>Inactivo</td>
     <?php endif ?></h6>
-                        <a href="editarcandidato.php?id=<?php echo $candidato->id; ?>" class="card-link btn btn-outline-primary">Editar</a>
-                        <a href="eliminarcandidato.php?id=<?php echo $candidato->id; ?>" class="card-link btn btn-outline-danger"
-                                      onclick="return confirmar()">Eliminar</a>
-                                      </div>
+      <a href="editarcandidato.php?id=<?php echo $candidato->id; ?>" class="card-link btn btn-outline-primary">Editar</a>
+      <a href="eliminarcandidato.php?id=<?php echo $candidato->id; ?>" class="card-link btn btn-outline-danger" onclick="return confirmar()">Eliminar</a>
+      </div>
 
               </div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
   <?php endforeach; ?>
 </div>
+  
+</body>
+</html>
+  

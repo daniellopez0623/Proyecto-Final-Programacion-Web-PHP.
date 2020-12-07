@@ -80,7 +80,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
     }
 }
 ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-10%">
@@ -109,9 +109,9 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                         <h5 class="card-title"> <?php echo $candidato->nombre?></h5>
                         <h5 class="card-subtitle mb-2"><?php echo $candidato->apellido?></h5>
                         <h6 class="card-text">Partido: <?php if ($candidato->partido_pertenece == 1): ?>
-                            <td>PLD</td>
+                            <td>PRM</td>
                             <?php else: ?>
-                            <td>PRD</td>
+                            <td>PLD</td>
                             <?php endif; ?></h6>
                         <h6 class="card-text">Puesto: <?php if ($candidato->puesto_aspira == 2): ?>
                             <td>Diputado</td>
@@ -125,7 +125,6 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                             <?php endif; ?></h6>
                         
                             <?php if($cantSenador):?>
-                                <a href="voto.php" class="btn btn-warning" onclick="return confirmar()">Votar</a>
                                 <td><a href="votoS.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>
                             <?php elseif($cantAlcalde):?>
                                 <td><a href="VotoA.php?VDiputado=<?php echo $candidato->id ?>&VPresidente=<?php echo $VPresidente ?>" class="btn btn-danger btnEliEdit">VOTAR</a></td>

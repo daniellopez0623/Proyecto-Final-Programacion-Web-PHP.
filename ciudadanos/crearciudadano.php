@@ -28,7 +28,7 @@ if (isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido']) 
   
 }
 ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-10%">
@@ -38,8 +38,6 @@ if (isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido']) 
                 </nav>
             </div>
             <?php printHeader(true); ?>
-
-
             <div class="card text-white bg-dark mb-3">
                 <h5 class="card-header">Crear Ciudadano</h5>
                 <div class="card-body">
@@ -82,4 +80,4 @@ if (isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido']) 
 
                     <?php printFooter(true); ?>
 
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    
