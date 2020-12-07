@@ -48,9 +48,11 @@ $listarcandidato = $service->Getlista();
     <h5 class="card-subtitle mb-2"><?php echo $candidato->apellido?></h5>
     <h6 class="card-text">Partido: <?php if($candidato->partido_pertenece == 1): ?></h6>
     
-      <td>PLD</td>
-    <?php elseif($candidato->partido_pertenece == 1): ?>
       <td>PRD</td>
+    <?php elseif($candidato->partido_pertenece == 2): ?>
+      <td>PLD</td>
+      <?php elseif($candidato->partido_pertenece == 4): ?>
+        <td>Alianza Pais</td>
     <?php else: ?>
       <td>Ninguno</td>
     <?php endif ?></h6> 

@@ -101,7 +101,7 @@ if($result = $mysqli->query("SELECT * FROM candidatos c WHERE C.puesto_aspira = 
                 &nbsp;&nbsp;&nbsp;
                 <div class="card text-white bg-dark cover-container" style=" width: 14rem" ;>
                     <img class="bd-placeholder-img card-img-top"
-                        src="<?php echo "../candidatos/imagenes/candidato/" .  $candidato->foto ?>" width="100%"
+                        src="<?php echo "../candidatos/imagenes/candidato/" .  $candidato->foto_perfil ?>" width="100%"
                         height="150" role="img" aria-label="Placeholder: Thumbnail">
 
                     <div class="card-body">

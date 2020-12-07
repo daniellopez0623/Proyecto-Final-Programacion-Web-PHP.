@@ -56,7 +56,7 @@ if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
 
                         <div class="form-group">
                             <label for="contrasena">Contrasena</label>
-                            <input type="text" class="form-control" id="contrasena" name="contrasena" placeholder="Contrasena" tabindex="2">
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contrasena" tabindex="2">
                         </div>
 
                         </div>
@@ -73,21 +73,3 @@ if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
 </body>
 </html>
 
-<script>
-//     function Validar(){
-        
-//         var inputadmin = document.getElementById('adminUser');
-//         var inputpass = document.getElementById('adminPass');
-
-//         if(inputadmin.value === "admin" && inputpass.value === "user"){
-
-//             alert('Bienvenido');
-//             location.href = "admin.php";
-
-//         }else{
-            
-//             alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
-//             location.reload();
-//         }
-//     }
-// </script>
